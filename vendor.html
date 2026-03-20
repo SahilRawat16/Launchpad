@@ -6,7 +6,7 @@
   <title>Vendor Dashboard — DukaanSetu</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -60,8 +60,8 @@
   <div class="container">
 
     <!-- Summary KPI row -->
-    <div class="kpi-row" data-aos="fade-up">
-      <div class="kpi-card">
+    <div class="kpi-row">
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="100">
         <div class="kpi-icon kpi-icon--blue">
           <i data-lucide="package" class="icon-md"></i>
         </div>
@@ -70,7 +70,7 @@
           <p class="kpi-label">Total Products</p>
         </div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="200">
         <div class="kpi-icon kpi-icon--green">
           <i data-lucide="indian-rupee" class="icon-md"></i>
         </div>
@@ -79,7 +79,7 @@
           <p class="kpi-label">Inventory Value</p>
         </div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="300">
         <div class="kpi-icon kpi-icon--orange">
           <i data-lucide="truck" class="icon-md"></i>
         </div>
@@ -88,7 +88,7 @@
           <p class="kpi-label">Delivery SLA</p>
         </div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card" data-aos="fade-up" data-aos-delay="400">
         <div class="kpi-icon kpi-icon--purple">
           <i data-lucide="star" class="icon-md"></i>
         </div>
@@ -148,12 +148,21 @@
             <input type="text" id="prodStore" placeholder="e.g. Sharma Dairy, Sector 7"/>
           </div>
 
-          <div class="form-group">
-            <label for="prodStock">
-              <i data-lucide="boxes" class="icon-xs label-icon"></i>
-              Stock Available (units)
-            </label>
-            <input type="number" id="prodStock" placeholder="e.g. 50" min="1"/>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prodStock">
+                <i data-lucide="boxes" class="icon-xs label-icon"></i>
+                Stock Available (units)
+              </label>
+              <input type="number" id="prodStock" placeholder="e.g. 50" min="1"/>
+            </div>
+            <div class="form-group">
+              <label for="prodImage">
+                <i data-lucide="image" class="icon-xs label-icon"></i>
+                Image (Optional)
+              </label>
+              <input type="file" id="prodImage" accept="image/*" class="file-input"/>
+            </div>
           </div>
 
           <button class="btn btn-forest btn-full" id="addProductBtn">
