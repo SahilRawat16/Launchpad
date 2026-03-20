@@ -1,9 +1,3 @@
-/* ═══════════════════════════════════════════════
-   DukaanSetu  ·  script.js
-   Shared across all 3 pages
-   ═══════════════════════════════════════════════ */
-
-/* ─── DATA ────────────────────────────────────── */
 
 const IMAGES = {
   dairy:      "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=600&q=80&fit=crop",
@@ -35,21 +29,17 @@ const allRecoPool = [
 
 let vendorProducts    = [];
 let activeFilter      = "all";
-let currentRecoIdx    = [0, 1, 2, 3, 4, 5]; // Expanded for slider
-
-/* ─── TOAST ───────────────────────────────────── */
+let currentRecoIdx    = [0, 1, 2, 3, 4, 5]; 
 function showToast(msg) {
   const toast   = document.getElementById("toast");
   const toastMsg = document.getElementById("toastMsg");
   if (!toast) return;
   toastMsg.textContent = msg;
   toast.classList.add("show");
-  // Re-init icon inside toast
   if (window.lucide) lucide.createIcons();
   setTimeout(() => toast.classList.remove("show"), 2800);
 }
 
-/* ─── PRODUCTS PAGE ───────────────────────────── */
 
 function buildProductCard(p, delay = 0) {
   const card = document.createElement("div");
@@ -100,7 +90,6 @@ function renderProducts() {
       : `${filtered.length} product${filtered.length !== 1 ? "s" : ""} in "${activeFilter}"`;
   }
 
-  // Bind order buttons
   grid.querySelectorAll(".order-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const prod = localProducts.find(p => p.id === parseInt(btn.getAttribute("data-id")));
@@ -108,7 +97,6 @@ function renderProducts() {
     });
   });
 
-  // Re-render Lucide icons inside new cards
   if (window.lucide) lucide.createIcons();
 }
 
@@ -121,8 +109,7 @@ function renderRecommendations() {
     const item = allRecoPool[idx];
     const card = document.createElement("div");
     card.className = "reco-card";
-    // We remove the static animation delay for dynamic flex items to prevent jumpiness on refresh,
-    // AOS will handle the initial load if data-aos is on the parent grid.
+
     card.setAttribute("data-pool-index", idx);
     card.innerHTML = `
       <img class="reco-card-img"
@@ -153,7 +140,7 @@ function handleRecoClick(clickedIdx) {
       .filter(i => !currentRecoIdx.includes(i));
     available.sort(() => Math.random() - 0.5);
     const kept   = currentRecoIdx.filter(i => i !== clickedIdx);
-    const needed = 6 - kept.length; // Maintain 6 items in the slider
+    const needed = 6 - kept.length; 
     currentRecoIdx = [...kept, ...available.slice(0, needed)];
     renderRecommendations();
   }, 280);
@@ -167,7 +154,7 @@ function initSlider() {
 
   const scrollNext = () => {
     const cardWidth = grid.querySelector('.reco-card')?.offsetWidth || 280;
-    // Check if reached the end (with a 10px buffer for fractional pixels)
+
     if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10) {
       grid.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
@@ -197,7 +184,6 @@ function initSlider() {
     resetAutoScroll();
   });
 
-  // Pause on hover
   grid.addEventListener("mouseenter", () => clearInterval(autoScrollInterval));
   grid.addEventListener("mouseleave", resetAutoScroll);
 }
@@ -215,7 +201,6 @@ function initFilters() {
   });
 }
 
-/* ─── VENDOR PAGE ─────────────────────────────── */
 
 function updateKPIs() {
   const numEl = document.getElementById("kpiProducts");
@@ -248,7 +233,7 @@ function renderVendorList(filterQuery = "") {
   if (emptyEl) emptyEl.style.display = "none";
 
   filtered.forEach((p, i) => {
-    // find real index for delete
+
     const realIndex = vendorProducts.findIndex(vp => vp === p);
     const el = document.createElement("div");
     el.className = "vendor-item";
@@ -320,7 +305,6 @@ function initVendorForm() {
       customImg
     });
 
-    // Clear form
     ["prodName","prodPrice","prodStore","prodStock","prodImage"].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.value = "";
@@ -335,13 +319,11 @@ function initVendorForm() {
     if (e.key === "Enter") doAdd();
   });
 
-  // Live search
   document.getElementById("vendorSearch")?.addEventListener("input", e => {
     renderVendorList(e.target.value);
   });
 }
 
-/* ─── NAVBAR ──────────────────────────────────── */
 
 function initNavbar() {
   const hamburger = document.getElementById("hamburger");
@@ -353,14 +335,13 @@ function initNavbar() {
     link.addEventListener("click", () => navLinks.classList.remove("open"));
   });
 
-  // Scroll shadow
+ 
   const navbar = document.getElementById("navbar");
   window.addEventListener("scroll", () => {
     navbar?.classList.toggle("scrolled", window.scrollY > 10);
   });
 }
 
-/* ─── ANIMATED COUNTERS ───────────────────────── */
 function initCounters() {
   const counters = document.querySelectorAll(".count-up");
   if (!counters.length) return;
@@ -370,19 +351,18 @@ function initCounters() {
       if (entry.isIntersecting) {
         const el = entry.target;
         const target = parseInt(el.getAttribute("data-target")) || 0;
-        const duration = 2000; // 2 seconds spin
+        const duration = 2000; 
         let startTime = null;
         
         const countUp = (currentTime) => {
           if (!startTime) startTime = currentTime;
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          
-          // easeOutExpo for the lottery slowing-down effect
+         
           const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
           
           let currentVal = Math.floor(easeOut * target);
-          // Slight randomization for lottery effect rapidly changing numbers
+      
           if (progress < 0.8 && Math.random() > 0.5) {
              currentVal = Math.floor(currentVal + (Math.random() * target * 0.15));
           }
@@ -399,17 +379,16 @@ function initCounters() {
         obs.unobserve(el);
       }
     });
-  }, { threshold: 0.5 }); // Start animation when 50% visible
+  }, { threshold: 0.5 });
 
   counters.forEach(c => observer.observe(c));
 }
 
-/* ─── INIT ────────────────────────────────────── */
 document.addEventListener("DOMContentLoaded", () => {
-  // Init Lucide icons
+ 
   if (window.lucide) lucide.createIcons();
 
-  // Init AOS
+  
   if (window.AOS) {
     AOS.init({
       duration: 900,
@@ -423,9 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initNavbar();
-  initCounters(); // Init Animated Lottery Counters
-
-  // Products page
+  initCounters(); 
   if (document.getElementById("productGrid")) {
     renderProducts();
     initFilters();
@@ -433,7 +410,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initSlider();
   }
 
-  // Vendor page
   if (document.getElementById("vendorProductList")) {
     renderVendorList();
     initVendorForm();
