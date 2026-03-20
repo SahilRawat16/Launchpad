@@ -98,10 +98,20 @@
         </div>
         <h2 class="section-h2" style="margin-bottom:0">Recommended Products</h2>
       </div>
-      <p class="reco-refresh-hint">
-        <i data-lucide="refresh-cw" class="icon-xs"></i>
-        Click any card to refresh
-      </p>
+      <div class="reco-actions">
+        <p class="reco-refresh-hint">
+          <i data-lucide="refresh-cw" class="icon-xs"></i>
+          Click card to refresh
+        </p>
+        <div class="slider-nav">
+          <button class="slider-btn" id="recoPrev" aria-label="Previous">
+            <i data-lucide="chevron-left" class="icon-sm"></i>
+          </button>
+          <button class="slider-btn" id="recoNext" aria-label="Next">
+            <i data-lucide="chevron-right" class="icon-sm"></i>
+          </button>
+        </div>
+      </div>
     </div>
     <div class="reco-grid" id="recoGrid" data-aos="fade-up" data-aos-delay="100"></div>
   </div>

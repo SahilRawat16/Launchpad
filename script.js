@@ -35,7 +35,7 @@ const allRecoPool = [
 
 let vendorProducts    = [];
 let activeFilter      = "all";
-let currentRecoIdx    = [0, 1, 2];
+let currentRecoIdx    = [0, 1, 2, 3, 4, 5]; // Expanded for slider
 
 /* ─── TOAST ───────────────────────────────────── */
 function showToast(msg) {
@@ -121,7 +121,8 @@ function renderRecommendations() {
     const item = allRecoPool[idx];
     const card = document.createElement("div");
     card.className = "reco-card";
-    card.style.animationDelay = `${i * 0.08}s`;
+    // We remove the static animation delay for dynamic flex items to prevent jumpiness on refresh,
+    // AOS will handle the initial load if data-aos is on the parent grid.
     card.setAttribute("data-pool-index", idx);
     card.innerHTML = `
       <img class="reco-card-img"
@@ -148,10 +149,29 @@ function handleRecoClick(clickedIdx) {
       .filter(i => !currentRecoIdx.includes(i));
     available.sort(() => Math.random() - 0.5);
     const kept   = currentRecoIdx.filter(i => i !== clickedIdx);
-    const needed = 3 - kept.length;
+    const needed = 6 - kept.length; // Maintain 6 items in the slider
     currentRecoIdx = [...kept, ...available.slice(0, needed)];
     renderRecommendations();
   }, 280);
+}
+
+function initSlider() {
+  const grid = document.getElementById("recoGrid");
+  const prevBtn = document.getElementById("recoPrev");
+  const nextBtn = document.getElementById("recoNext");
+  if (!grid || !prevBtn || !nextBtn) return;
+
+  nextBtn.addEventListener("click", () => {
+    // Scroll right by exactly 1 card + CSS gap (24px)
+    const cardWidth = grid.querySelector('.reco-card')?.offsetWidth || 280;
+    grid.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
+  });
+
+  prevBtn.addEventListener("click", () => {
+    // Scroll left by exactly 1 card + CSS gap (24px)
+    const cardWidth = grid.querySelector('.reco-card')?.offsetWidth || 280;
+    grid.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
+  });
 }
 
 function initFilters() {
@@ -327,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     initFilters();
     renderRecommendations();
+    initSlider();
   }
 
   // Vendor page

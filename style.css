@@ -786,6 +786,11 @@ button { font-family: var(--font-u); }
 
 /* ─── RECOMMENDATIONS ─────────────────────────── */
 .reco-section { background: var(--white); }
+.reco-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 .reco-refresh-hint {
   display: flex;
   align-items: center;
@@ -794,13 +799,53 @@ button { font-family: var(--font-u); }
   color: var(--ink-40);
   flex-shrink: 0;
 }
-
-.reco-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+.slider-nav {
+  display: flex;
+  gap: 8px;
 }
+.slider-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink-70);
+  display: flex; justify-content: center; align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.slider-btn:hover {
+  background: var(--forest);
+  color: var(--white);
+  border-color: var(--forest);
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+}
+.slider-btn:active {
+  transform: translateY(0);
+}
+
+/* Horizontal Scroll Slider */
+.reco-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 24px; /* Room for shadow */
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+.reco-grid::-webkit-scrollbar {
+  display: none;
+}
+
 .reco-card {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: 280px; 
+  scroll-snap-align: start;
+  
   background: var(--cream);
   border: 1.5px solid var(--border);
   border-radius: var(--r-lg);
@@ -815,22 +860,22 @@ button { font-family: var(--font-u); }
   box-shadow: var(--sh-md);
 }
 .reco-card-img {
-  height: 155px;
+  height: 160px;
   width: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 .reco-card:hover .reco-card-img { transform: scale(1.04); }
-.reco-card-body { padding: 16px 18px; }
+.reco-card-body { padding: 18px 20px; }
 .reco-name {
   font-family: var(--font-d);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--ink);
   margin-bottom: 4px;
 }
-.reco-why { font-size: 0.78rem; color: var(--ink-40); margin-bottom: 8px; line-height: 1.5; }
-.reco-price { font-family: var(--font-d); font-weight: 700; color: var(--forest); font-size: 1.05rem; }
+.reco-why { font-size: 0.82rem; color: var(--ink-40); margin-bottom: 12px; line-height: 1.5; }
+.reco-price { font-family: var(--font-d); font-weight: 700; color: var(--forest); font-size: 1.1rem; }
 
 /* ─── KPI ROW ─────────────────────────────────── */
 .kpi-row {
