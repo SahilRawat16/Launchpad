@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Enable | Professional E-Commerce Enabler for Local Shops</title>
+    <!-- Professional Google Font: Outfit (Tech-forward and clean) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container flex-nav">
+            <h1 class="logo">E-Enable<span>.</span></h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#hyperlocal">Browse Products</a></li>
+                <li><a href="#vendor">Vendor Portal</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container hero-content-wrapper">
+            <div class="hero-text">
+                <h2>Local Business ko Digitalize karein. 🚀</h2>
+                <p>E-Enable provides you with a robust platform to take your offline shop online. Hum aapko empower karte hain with hyperlocal delivery system aur deep inventory management, takki aapka business grow kare naturally. <strong>Ab har dukan banegi global digital brand!</strong></p>
+                <div class="hero-btns">
+                    <a href="#hyperlocal" class="btn-primary">Our Solutions</a>
+                    <a href="#vendor" class="btn-outline">Register Shop</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="professional_vendor_hero_1773980829207.png" alt="E-Enable Dashboard Preview">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hyperlocal Section -->
+    <section id="hyperlocal" class="section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3.5rem;">
+                <h3 style="font-size: 2.25rem;">Hyperlocal Marketplace</h3>
+                <p style="color: var(--text-secondary);">Direct access to verified local stores</p>
+            </div>
+            <div id="product-grid" class="grid-container">
+                <!-- Data-driven product cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Vendor Dashboard -->
+    <section id="vendor" class="section" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3.5rem;">
+                <h3 style="font-size: 2.25rem;">Vendor Management Portal</h3>
+                <p style="color: var(--text-secondary);">Your centralized command center for inventory</p>
+            </div>
+            <div class="dashboard-wrapper">
+                <!-- Add Product Form -->
+                <div class="dashboard-card shadow-lg">
+                    <h4 style="margin-bottom: 1.5rem;">Add Product</h4>
+                    <form id="add-product-form">
+                        <div class="form-group">
+                            <label for="p-name">Product Label</label>
+                            <input type="text" id="p-name" placeholder="E.g. Fresh Mangoes (1kg)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-price">Listing Price (INR)</label>
+                            <input type="number" id="p-price" placeholder="E.g. 150" required>
+                        </div>
+                        <button type="submit" class="btn-success">List Item</button>
+                    </form>
+                </div>
+
+                <!-- Inventory List -->
+                <div class="dashboard-card shadow-lg">
+                    <h4 style="margin-bottom: 1.5rem;">Inventory Overview</h4>
+                    <ul id="vendor-product-list" class="product-list">
+                        <li class="empty-msg" style="text-align: center; padding: 2rem 0; color: var(--text-muted);">
+                            No inventory items listed yet.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section id="recommendations" class="section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3.5rem;">
+                <h3 style="font-size: 2.25rem;">Recommended Solutions</h3>
+                <p style="color: var(--text-secondary);">Based on your business profile</p>
+            </div>
+            <div id="recommendation-grid" class="grid-container">
+                <!-- Dynamic Recommendations -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Professional Footer -->
+    <footer class="section" style="padding: 4rem 0; border-top: 1px solid var(--border-light); background: var(--bg-surface);">
+        <div class="container flex-nav">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2024 E-Enable Cloud Solutions. All rights reserved.</p>
+            <div class="nav-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
