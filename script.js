@@ -130,6 +130,10 @@ function renderRecommendations() {
         alt="${item.name}"
         loading="lazy"
       />
+      <div class="reco-badge">
+        <i data-lucide="sparkles" class="icon-xs"></i>
+        Featured
+      </div>
       <div class="reco-card-body">
         <p class="reco-name">${item.name}</p>
         <p class="reco-why">${item.why}</p>
@@ -176,11 +180,11 @@ function initSlider() {
     grid.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
   };
 
-  let autoScrollInterval = setInterval(scrollNext, 3000);
+  let autoScrollInterval = setInterval(scrollNext, 2000);
 
   const resetAutoScroll = () => {
     clearInterval(autoScrollInterval);
-    autoScrollInterval = setInterval(scrollNext, 3000);
+    autoScrollInterval = setInterval(scrollNext, 2000);
   };
 
   nextBtn.addEventListener("click", () => {
@@ -250,7 +254,7 @@ function renderVendorList(filterQuery = "") {
     el.className = "vendor-item";
     el.innerHTML = `
       <img class="vendor-item-img"
-        src="${IMAGES[p.category] || IMAGES.grains}"
+        src="${p.customImg || IMAGES[p.category] || IMAGES.grains}"
         alt="${p.name}"
       />
       <div class="vendor-item-info">
@@ -297,20 +301,27 @@ function initVendorForm() {
     const category = document.getElementById("prodCategory").value;
     const store    = document.getElementById("prodStore").value.trim();
     const stock    = parseInt(document.getElementById("prodStock")?.value) || 0;
+    const imageInput = document.getElementById("prodImage");
 
     if (!name)          { errorEl.textContent = "Product name is required."; return; }
     if (!price || price <= 0) { errorEl.textContent = "Please enter a valid price."; return; }
 
     errorEl.textContent = "";
 
+    let customImg = null;
+    if (imageInput && imageInput.files && imageInput.files.length > 0) {
+      customImg = URL.createObjectURL(imageInput.files[0]);
+    }
+
     vendorProducts.push({
       name, price, category,
       store: store || "Your Store",
       stock,
+      customImg
     });
 
     // Clear form
-    ["prodName","prodPrice","prodStore","prodStock"].forEach(id => {
+    ["prodName","prodPrice","prodStore","prodStock","prodImage"].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.value = "";
     });
@@ -349,6 +360,50 @@ function initNavbar() {
   });
 }
 
+/* ─── ANIMATED COUNTERS ───────────────────────── */
+function initCounters() {
+  const counters = document.querySelectorAll(".count-up");
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute("data-target")) || 0;
+        const duration = 2000; // 2 seconds spin
+        let startTime = null;
+        
+        const countUp = (currentTime) => {
+          if (!startTime) startTime = currentTime;
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // easeOutExpo for the lottery slowing-down effect
+          const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          
+          let currentVal = Math.floor(easeOut * target);
+          // Slight randomization for lottery effect rapidly changing numbers
+          if (progress < 0.8 && Math.random() > 0.5) {
+             currentVal = Math.floor(currentVal + (Math.random() * target * 0.15));
+          }
+          currentVal = Math.min(currentVal, target);
+          
+          el.innerText = currentVal;
+          if (progress < 1) {
+            requestAnimationFrame(countUp);
+          } else {
+            el.innerText = target;
+          }
+        };
+        requestAnimationFrame(countUp);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 }); // Start animation when 50% visible
+
+  counters.forEach(c => observer.observe(c));
+}
+
 /* ─── INIT ────────────────────────────────────── */
 document.addEventListener("DOMContentLoaded", () => {
   // Init Lucide icons
@@ -357,14 +412,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Init AOS
   if (window.AOS) {
     AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 50
+      duration: 900,
+      easing: 'ease-out-quart',
+      once: false,
+      mirror: true,
+      offset: 80,
+      delay: 0,
+      anchorPlacement: 'top-bottom'
     });
   }
 
   initNavbar();
+  initCounters(); // Init Animated Lottery Counters
 
   // Products page
   if (document.getElementById("productGrid")) {
