@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vendor Dashboard — DukaanSetu</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Free delivery on orders above ₹199 &nbsp;·&nbsp; Available in 50+ neighbourhoods</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="DukaanSetu" class="logo-img">
+      <span class="logo-text">DukaanSetu</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="vendor.html" class="nav-link active">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="products.html" class="nav-action-btn">
+        <i data-lucide="shopping-bag" class="icon-sm"></i>
+        <span>Shop Now</span>
+      </a>
+      <button class="hamburger" id="hamburger">
+        <i data-lucide="menu" class="icon-sm"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" data-aos="fade-in">
+  <div class="container">
+    <div class="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+      <a href="index.html">Home</a>
+      <i data-lucide="chevron-right" class="icon-xs"></i>
+      <span>Vendor Dashboard</span>
+    </div>
+    <h1 class="page-hero-title" data-aos="fade-up" data-aos-delay="200">Vendor Dashboard</h1>
+    <p class="page-hero-sub" data-aos="fade-up" data-aos-delay="300">Manage your products and track your store performance</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<section class="section">
+  <div class="container">
+
+    <!-- Summary KPI row -->
+    <div class="kpi-row" data-aos="fade-up">
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--blue">
+          <i data-lucide="package" class="icon-md"></i>
+        </div>
+        <div>
+          <p class="kpi-num" id="kpiProducts">0</p>
+          <p class="kpi-label">Total Products</p>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--green">
+          <i data-lucide="indian-rupee" class="icon-md"></i>
+        </div>
+        <div>
+          <p class="kpi-num" id="kpiValue">₹0</p>
+          <p class="kpi-label">Inventory Value</p>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--orange">
+          <i data-lucide="truck" class="icon-md"></i>
+        </div>
+        <div>
+          <p class="kpi-num">30 min</p>
+          <p class="kpi-label">Delivery SLA</p>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon kpi-icon--purple">
+          <i data-lucide="star" class="icon-md"></i>
+        </div>
+        <div>
+          <p class="kpi-num">4.9</p>
+          <p class="kpi-label">Store Rating</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="vendor-layout">
+
+      <!-- ADD PRODUCT FORM -->
+      <div class="v-panel" data-aos="fade-right">
+        <div class="v-panel-header">
+          <i data-lucide="plus-circle" class="icon-sm panel-header-icon"></i>
+          <h2>Add New Product</h2>
+        </div>
+        <div class="v-panel-body">
+
+          <div class="form-group">
+            <label for="prodName">
+              <i data-lucide="tag" class="icon-xs label-icon"></i>
+              Product Name
+            </label>
+            <input type="text" id="prodName" placeholder="e.g. Organic Honey"/>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prodPrice">
+                <i data-lucide="indian-rupee" class="icon-xs label-icon"></i>
+                Price (₹)
+              </label>
+              <input type="number" id="prodPrice" placeholder="e.g. 250" min="1"/>
+            </div>
+            <div class="form-group">
+              <label for="prodCategory">
+                <i data-lucide="layers" class="icon-xs label-icon"></i>
+                Category
+              </label>
+              <select id="prodCategory">
+                <option value="dairy">Dairy</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="grains">Grains</option>
+                <option value="spices">Spices</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prodStore">
+              <i data-lucide="map-pin" class="icon-xs label-icon"></i>
+              Store / Location
+            </label>
+            <input type="text" id="prodStore" placeholder="e.g. Sharma Dairy, Sector 7"/>
+          </div>
+
+          <div class="form-group">
+            <label for="prodStock">
+              <i data-lucide="boxes" class="icon-xs label-icon"></i>
+              Stock Available (units)
+            </label>
+            <input type="number" id="prodStock" placeholder="e.g. 50" min="1"/>
+          </div>
+
+          <button class="btn btn-forest btn-full" id="addProductBtn">
+            <i data-lucide="plus" class="icon-sm"></i>
+            Add to Listing
+          </button>
+          <p class="form-error" id="formError"></p>
+        </div>
+      </div>
+
+      <!-- PRODUCT LIST -->
+      <div class="v-panel v-panel-list" data-aos="fade-left">
+        <div class="v-panel-header">
+          <i data-lucide="list" class="icon-sm panel-header-icon"></i>
+          <h2>Your Listings</h2>
+          <span class="badge-count" id="productCount">0 items</span>
+        </div>
+        <div class="v-panel-body" style="padding-top:0">
+
+          <!-- Search within vendor list -->
+          <div class="list-search-wrap">
+            <i data-lucide="search" class="icon-xs list-search-icon"></i>
+            <input type="text" id="vendorSearch" class="list-search" placeholder="Search your products…"/>
+          </div>
+
+          <div class="vendor-product-list" id="vendorProductList"></div>
+          <p class="empty-msg" id="vendorEmpty">
+            <i data-lucide="inbox" class="icon-lg empty-icon"></i><br>
+            No products listed yet.<br>Add your first product using the form.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="DukaanSetu Logo" class="logo-img">
+        <span class="logo-text">DukaanSetu</span>
+      </a>
+      <p class="footer-tagline">Connecting local vendors with<br>digital commerce — across Bharat.</p>
+    </div>
+    <div class="footer-links" data-aos="fade-in">
+      <div class="footer-col">
+        <p class="footer-col-title">Platform</p>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="vendor.html">Vendor Dashboard</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 DukaanSetu. All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">
+  <i data-lucide="check-circle" class="icon-sm"></i>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- AOS Animation Logic -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

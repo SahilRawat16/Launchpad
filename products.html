@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products — DukaanSetu</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Free delivery on orders above ₹199 &nbsp;·&nbsp; Available in 50+ neighbourhoods</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="DukaanSetu" class="logo-img">
+      <span class="logo-text">DukaanSetu</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link active">Products</a></li>
+      <li><a href="vendor.html" class="nav-link">Vendors</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="products.html" class="nav-action-btn">
+        <i data-lucide="shopping-bag" class="icon-sm"></i>
+        <span>Shop Now</span>
+      </a>
+      <button class="hamburger" id="hamburger">
+        <i data-lucide="menu" class="icon-sm"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" data-aos="fade-in">
+  <div class="container">
+    <div class="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+      <a href="index.html">Home</a>
+      <i data-lucide="chevron-right" class="icon-xs"></i>
+      <span>Products</span>
+    </div>
+    <h1 class="page-hero-title" data-aos="fade-up" data-aos-delay="200">Local Products</h1>
+    <p class="page-hero-sub" data-aos="fade-up" data-aos-delay="300">Fresh, trusted goods from stores within 5 km of you</p>
+  </div>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<section class="section">
+  <div class="container">
+
+    <!-- Toolbar -->
+    <div class="products-toolbar" data-aos="fade-up">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">
+          <i data-lucide="layout-grid" class="icon-xs"></i> All
+        </button>
+        <button class="filter-btn" data-filter="dairy">
+          <i data-lucide="milk" class="icon-xs"></i> Dairy
+        </button>
+        <button class="filter-btn" data-filter="vegetables">
+          <i data-lucide="carrot" class="icon-xs"></i> Vegetables
+        </button>
+        <button class="filter-btn" data-filter="grains">
+          <i data-lucide="wheat" class="icon-xs"></i> Grains
+        </button>
+        <button class="filter-btn" data-filter="spices">
+          <i data-lucide="flame" class="icon-xs"></i> Spices
+        </button>
+      </div>
+      <p class="product-result-count" id="resultCount">Showing all products</p>
+    </div>
+
+    <!-- Product grid -->
+    <div class="product-grid" id="productGrid" data-aos="fade-up" data-aos-delay="100"></div>
+
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="section reco-section">
+  <div class="container">
+    <div class="section-row-header" data-aos="fade-right">
+      <div>
+        <div class="section-kicker">
+          <i data-lucide="sparkles" class="icon-xs kicker-icon"></i>
+          Personalised for You
+        </div>
+        <h2 class="section-h2" style="margin-bottom:0">Recommended Products</h2>
+      </div>
+      <p class="reco-refresh-hint">
+        <i data-lucide="refresh-cw" class="icon-xs"></i>
+        Click any card to refresh
+      </p>
+    </div>
+    <div class="reco-grid" id="recoGrid" data-aos="fade-up" data-aos-delay="100"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="DukaanSetu Logo" class="logo-img">
+        <span class="logo-text">DukaanSetu</span>
+      </a>
+      <p class="footer-tagline">Connecting local vendors with<br>digital commerce — across Bharat.</p>
+    </div>
+    <div class="footer-links" data-aos="fade-in">
+      <div class="footer-col">
+        <p class="footer-col-title">Platform</p>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="vendor.html">Vendor Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Categories</p>
+        <a href="products.html">Vegetables</a>
+        <a href="products.html">Dairy</a>
+        <a href="products.html">Spices</a>
+        <a href="products.html">Grains</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 DukaanSetu. All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">
+  <i data-lucide="check-circle" class="icon-sm"></i>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- AOS Animation Logic -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,119 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Enable | Professional E-Commerce Enabler for Local Shops</title>
-    <!-- Professional Google Font: Outfit (Tech-forward and clean) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DukaanSetu — Hyperlocal Commerce Platform</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container flex-nav">
-            <h1 class="logo">E-Enable<span>.</span></h1>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#hyperlocal">Browse Products</a></li>
-                <li><a href="#vendor">Vendor Portal</a></li>
-                <li><a href="#recommendations">Recommendations</a></li>
-            </ul>
+
+<div class="topbar">
+  <span>Free delivery on orders above ₹199 &nbsp;·&nbsp; Available in 50+ neighbourhoods</span>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="DukaanSetu" class="logo-img">
+      <span class="logo-text">DukaanSetu</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="vendor.html" class="nav-link">Vendors</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="products.html" class="nav-action-btn">
+        <i data-lucide="shopping-bag" class="icon-sm"></i>
+        <span>Shop Now</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <i data-lucide="menu" class="icon-sm"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left" data-aos="fade-up">
+    <div class="hero-tag">
+      <i data-lucide="map-pin" class="icon-xs"></i>
+      Hyperlocal · Sector 7, Mohali
+    </div>
+    <h1 class="hero-h1">
+      Your City's Best<br>
+      <em>Local Stores</em><br>
+      — Now Online.
+    </h1>
+    <p class="hero-body">
+      DukaanSetu bridges the gap between your neighbourhood vendors and digital commerce.
+      Fresh groceries, dairy, spices — delivered to your door in under 30 minutes.
+    </p>
+    <div class="hero-cta-row">
+      <a href="products.html" class="btn btn-forest">
+        <i data-lucide="store" class="icon-sm"></i>
+        Browse Products
+      </a>
+      <a href="vendor.html" class="btn btn-ghost">
+        Become a Vendor
+        <i data-lucide="arrow-right" class="icon-sm"></i>
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <i data-lucide="shield-check" class="icon-sm trust-icon"></i>
+        <span>Verified Local Vendors</span>
+      </div>
+      <div class="trust-item">
+        <i data-lucide="clock" class="icon-sm trust-icon"></i>
+        <span>30-min Delivery</span>
+      </div>
+      <div class="trust-item">
+        <i data-lucide="leaf" class="icon-sm trust-icon"></i>
+        <span>Farm Fresh Quality</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right" data-aos="zoom-in" data-aos-delay="100">
+    <div class="hero-img-stack">
+      <img
+        src="hero.png"
+        alt="Premium Local Cuisine"
+        class="hero-main-img"
+      />
+      <!-- Floating card 1 -->
+      <div class="float-card float-card-1" data-aos="fade-left" data-aos-delay="300">
+        <div class="float-card-icon">
+          <i data-lucide="package-check" class="icon-sm"></i>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="home" class="hero">
-        <div class="container hero-content-wrapper">
-            <div class="hero-text">
-                <h2>Local Business ko Digitalize karein. 🚀</h2>
-                <p>E-Enable provides you with a robust platform to take your offline shop online. Hum aapko empower karte hain with hyperlocal delivery system aur deep inventory management, takki aapka business grow kare naturally. <strong>Ab har dukan banegi global digital brand!</strong></p>
-                <div class="hero-btns">
-                    <a href="#hyperlocal" class="btn-primary">Our Solutions</a>
-                    <a href="#vendor" class="btn-outline">Register Shop</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="professional_vendor_hero_1773980829207.png" alt="E-Enable Dashboard Preview">
-            </div>
+        <div>
+          <p class="float-card-num">1,240+</p>
+          <p class="float-card-label">Orders Today</p>
         </div>
-    </header>
-
-    <!-- Hyperlocal Section -->
-    <section id="hyperlocal" class="section">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 3.5rem;">
-                <h3 style="font-size: 2.25rem;">Hyperlocal Marketplace</h3>
-                <p style="color: var(--text-secondary);">Direct access to verified local stores</p>
-            </div>
-            <div id="product-grid" class="grid-container">
-                <!-- Data-driven product cards -->
-            </div>
+      </div>
+      <!-- Floating card 2 -->
+      <div class="float-card float-card-2" data-aos="fade-right" data-aos-delay="500">
+        <div class="float-card-icon float-card-icon--gold">
+          <i data-lucide="star" class="icon-sm"></i>
         </div>
-    </section>
-
-    <!-- Vendor Dashboard -->
-    <section id="vendor" class="section" style="background-color: var(--bg-surface);">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 3.5rem;">
-                <h3 style="font-size: 2.25rem;">Vendor Management Portal</h3>
-                <p style="color: var(--text-secondary);">Your centralized command center for inventory</p>
-            </div>
-            <div class="dashboard-wrapper">
-                <!-- Add Product Form -->
-                <div class="dashboard-card shadow-lg">
-                    <h4 style="margin-bottom: 1.5rem;">Add Product</h4>
-                    <form id="add-product-form">
-                        <div class="form-group">
-                            <label for="p-name">Product Label</label>
-                            <input type="text" id="p-name" placeholder="E.g. Fresh Mangoes (1kg)" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="p-price">Listing Price (INR)</label>
-                            <input type="number" id="p-price" placeholder="E.g. 150" required>
-                        </div>
-                        <button type="submit" class="btn-success">List Item</button>
-                    </form>
-                </div>
-
-                <!-- Inventory List -->
-                <div class="dashboard-card shadow-lg">
-                    <h4 style="margin-bottom: 1.5rem;">Inventory Overview</h4>
-                    <ul id="vendor-product-list" class="product-list">
-                        <li class="empty-msg" style="text-align: center; padding: 2rem 0; color: var(--text-muted);">
-                            No inventory items listed yet.
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div>
+          <p class="float-card-num">4.9</p>
+          <p class="float-card-label">Avg. Rating</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Recommendations -->
-    <section id="recommendations" class="section">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 3.5rem;">
-                <h3 style="font-size: 2.25rem;">Recommended Solutions</h3>
-                <p style="color: var(--text-secondary);">Based on your business profile</p>
-            </div>
-            <div id="recommendation-grid" class="grid-container">
-                <!-- Dynamic Recommendations -->
-            </div>
+<!-- ═══════════════════════════════════════
+     STATS BAND
+     ════════════════════════════════════════ -->
+<div class="stats-band" data-aos="fade-up">
+  <div class="stats-inner">
+    <div class="stat-block">
+      <p class="stat-big">200+</p>
+      <p class="stat-sub">Active Vendors</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <p class="stat-big">50+</p>
+      <p class="stat-sub">Neighbourhoods</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <p class="stat-big">30 min</p>
+      <p class="stat-sub">Avg. Delivery</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <p class="stat-big">₹199</p>
+      <p class="stat-sub">Free Delivery Above</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HOW IT WORKS
+     ════════════════════════════════════════ -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-kicker" data-aos="fade-right">
+      <i data-lucide="zap" class="icon-xs kicker-icon"></i>
+      How It Works
+    </div>
+    <h2 class="section-h2" data-aos="fade-up">Three steps to your door</h2>
+
+    <div class="steps-row">
+      <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="step-icon-wrap">
+          <i data-lucide="search" class="icon-md"></i>
         </div>
-    </section>
-
-    <!-- Simple Professional Footer -->
-    <footer class="section" style="padding: 4rem 0; border-top: 1px solid var(--border-light); background: var(--bg-surface);">
-        <div class="container flex-nav">
-            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2024 E-Enable Cloud Solutions. All rights reserved.</p>
-            <div class="nav-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Support</a>
-            </div>
+        <span class="step-num">01</span>
+        <h3>Discover</h3>
+        <p>Browse products from verified local stores within 5 km of your location.</p>
+      </div>
+      <div class="step-connector" data-aos="fade-in" data-aos-delay="200"><i data-lucide="arrow-right" class="icon-sm"></i></div>
+      <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="step-icon-wrap">
+          <i data-lucide="shopping-cart" class="icon-md"></i>
         </div>
-    </footer>
+        <span class="step-num">02</span>
+        <h3>Order</h3>
+        <p>Place your order directly with the local vendor. No hidden fees, no markup.</p>
+      </div>
+      <div class="step-connector" data-aos="fade-in" data-aos-delay="400"><i data-lucide="arrow-right" class="icon-sm"></i></div>
+      <div class="step-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="step-icon-wrap">
+          <i data-lucide="bike" class="icon-md"></i>
+        </div>
+        <span class="step-num">03</span>
+        <h3>Receive</h3>
+        <p>Your local store delivers fresh to your address in under 30 minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- ═══════════════════════════════════════
+     CATEGORIES
+     ════════════════════════════════════════ -->
+<section class="section cat-section">
+  <div class="container">
+    <div class="section-row-header" data-aos="fade-right">
+      <div>
+        <div class="section-kicker">
+          <i data-lucide="grid-2x2" class="icon-xs kicker-icon"></i>
+          Categories
+        </div>
+        <h2 class="section-h2" style="margin-bottom:0">What We Carry</h2>
+      </div>
+      <a href="products.html" class="link-arrow">
+        View all products <i data-lucide="arrow-right" class="icon-xs"></i>
+      </a>
+    </div>
+
+    <div class="cat-bento">
+      <a href="products.html" class="cat-tile cat-tile-lg" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80&fit=crop" alt="Vegetables"/>
+        <div class="cat-tile-body">
+          <span class="cat-tile-label">Fresh Vegetables</span>
+          <span class="cat-tile-sub">Harvested daily, delivered fresh</span>
+        </div>
+      </a>
+      <a href="products.html" class="cat-tile" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&q=80&fit=crop" alt="Dairy"/>
+        <div class="cat-tile-body">
+          <span class="cat-tile-label">Dairy & Milk</span>
+          <span class="cat-tile-sub">Morning fresh, every day</span>
+        </div>
+      </a>
+      <a href="products.html" class="cat-tile" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80&fit=crop" alt="Spices"/>
+        <div class="cat-tile-body">
+          <span class="cat-tile-label">Spices & Masala</span>
+          <span class="cat-tile-sub">Local mill, traditional blends</span>
+        </div>
+      </a>
+      <a href="products.html" class="cat-tile" data-aos="zoom-in" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9e54a?w=500&q=80&fit=crop" alt="Grains"/>
+        <div class="cat-tile-body">
+          <span class="cat-tile-label">Grains & Pulses</span>
+          <span class="cat-tile-sub">Sourced from local farms</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     VENDOR CTA
+     ════════════════════════════════════════ -->
+<section class="vendor-cta-section">
+  <div class="container">
+    <div class="vendor-cta-card" data-aos="fade-up">
+      <div class="vendor-cta-left">
+        <div class="vendor-cta-icon">
+          <i data-lucide="store" class="icon-lg"></i>
+        </div>
+        <div>
+          <h3>Are you a local vendor?</h3>
+          <p>List your products and start receiving orders from nearby customers today. Setup takes under 5 minutes — no technical knowledge needed.</p>
+          <ul class="vendor-cta-list">
+            <li><i data-lucide="check" class="icon-xs"></i> Free to list your store</li>
+            <li><i data-lucide="check" class="icon-xs"></i> Reach 1,000+ nearby customers</li>
+            <li><i data-lucide="check" class="icon-xs"></i> Simple dashboard, no app needed</li>
+          </ul>
+          <a href="vendor.html" class="btn btn-forest" style="margin-top:24px">
+            <i data-lucide="plus-circle" class="icon-sm"></i>
+            Open Your Store
+          </a>
+        </div>
+      </div>
+      <div class="vendor-cta-right" data-aos="fade-left" data-aos-delay="200">
+        <img
+          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop&crop=center"
+          alt="Vendor"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="DukaanSetu Logo" class="logo-img">
+        <span class="logo-text">DukaanSetu</span>
+      </a>
+      <p class="footer-tagline">Connecting local vendors with<br>digital commerce — across Bharat.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Platform</p>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="vendor.html">Vendor Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Categories</p>
+        <a href="products.html">Vegetables</a>
+        <a href="products.html">Dairy</a>
+        <a href="products.html">Spices</a>
+        <a href="products.html">Grains</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contact</p>
+        <a href="#">support@dukaansetu.in</a>
+        <a href="#">+91 98765 43210</a>
+        <a href="#">Mohali, Punjab</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 DukaanSetu. All rights reserved.</span>
+    <span>Made with care for Bharat's local economy</span>
+  </div>
+</footer>
+
+<!-- AOS Animation Logic -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
