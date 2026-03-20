@@ -161,17 +161,41 @@ function initSlider() {
   const nextBtn = document.getElementById("recoNext");
   if (!grid || !prevBtn || !nextBtn) return;
 
-  nextBtn.addEventListener("click", () => {
-    // Scroll right by exactly 1 card + CSS gap (24px)
+  const scrollNext = () => {
     const cardWidth = grid.querySelector('.reco-card')?.offsetWidth || 280;
-    grid.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
+    // Check if reached the end (with a 10px buffer for fractional pixels)
+    if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10) {
+      grid.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      grid.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
+    }
+  };
+
+  const scrollPrev = () => {
+    const cardWidth = grid.querySelector('.reco-card')?.offsetWidth || 280;
+    grid.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
+  };
+
+  let autoScrollInterval = setInterval(scrollNext, 3000);
+
+  const resetAutoScroll = () => {
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(scrollNext, 3000);
+  };
+
+  nextBtn.addEventListener("click", () => {
+    scrollNext();
+    resetAutoScroll();
   });
 
   prevBtn.addEventListener("click", () => {
-    // Scroll left by exactly 1 card + CSS gap (24px)
-    const cardWidth = grid.querySelector('.reco-card')?.offsetWidth || 280;
-    grid.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
+    scrollPrev();
+    resetAutoScroll();
   });
+
+  // Pause on hover
+  grid.addEventListener("mouseenter", () => clearInterval(autoScrollInterval));
+  grid.addEventListener("mouseleave", resetAutoScroll);
 }
 
 function initFilters() {
