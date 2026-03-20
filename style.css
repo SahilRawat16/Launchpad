@@ -139,10 +139,13 @@ button { font-family: var(--font-u); }
 }
 .logo-text {
   font-family: var(--font-d);
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--ink);
-  letter-spacing: -0.3px;
+  font-weight: 800;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, var(--forest), var(--leaf));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
 
 /* Nav links */
@@ -852,7 +855,12 @@ button { font-family: var(--font-u); }
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  animation: fadeUp 0.4s ease both;
+  animation: caraousel 0.5s ease-out both;
+}
+
+@keyframes caraousel {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 .reco-card:hover, .reco-card.selected {
   transform: translateY(-4px);
